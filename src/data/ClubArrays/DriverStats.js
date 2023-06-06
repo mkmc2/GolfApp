@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { historicalAverage } from '../../data/Formulas'
 
-export const DriverStats = () => {
+export const DriverData = () => {
 
     // State
-    const [driver100Data, setDriver100Data] = useState([{ key: 1, distance: '' }]);
-    const [driver75Data, setDriver75Data] = useState([{ key: 1, distance: '' }]);
+    const [driver100Data, setDriver100Data] = useState([]);
+    const [driver75Data, setDriver75Data] = useState([]);
 
     const [driverShotCounter100, setDriverShotCounter100,] = useState()
     const [driverShotCounter75, setDriverShotCounter75,] = useState()
@@ -77,7 +78,18 @@ export const DriverStats = () => {
     }
 
     return {
+        driver100Data,
+        setDriver100Data,
+        driver75Data,
+        setDriver75Data,
+        // Shot Totals
+        driverShotCounter100,
+        setDriverShotCounter100,
+        driverShotTotalCounter100,
+        driverShotCounter75,
+        // Historical Value
+        calculateHistoricalAverageDriver100,
     };
 };
 
-export default DriverStats;
+export default DriverData;

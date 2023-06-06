@@ -22,6 +22,11 @@ import ClubPickerScreen from './src/components/clubPicker';
 // import { driver100, driver80, threeWood100, threeWood80 } from './src/data/woodsData/WoodsStats';
 import { clubsInMyBag, clubsInMyBag2 } from './src/data/clubsInMyBag';
 import DriverStats from './src/data/ClubArrays/DriverStats';
+import ThreeWoodStats from './src/data/ClubArrays/ThreeWoodStats';
+import FiveWoodData from './src/data/ClubArrays/FiveWoodStats';
+import SevenWoodData from './src/data/ClubArrays/SevenWoodStats';
+
+// Screens
 import useCustomState from './src/data/shotData/MyShots2';
 import HelpScreen from './src/MiscScreens/HelpScreen';
 import ContactUsScreen from './src/MiscScreens/ContactUs';
@@ -421,6 +426,37 @@ function HomeTabs() {
         // Averages
     } = useCustomState();
 
+    const {
+        driver100Data,
+        setDriver100Data,
+        driver75Data,
+        setDriver75Data,
+        // Total Shots
+        driverShotCounter100,
+        setDriverShotCounter100,
+        driverShotTotalCounter100,
+        // Historical Value
+        calculateHistoricalAverageDriver100,
+    } = DriverStats();
+    const {
+        threeWood100Data,
+        setThreeWood100Data,
+        threeWood75Data,
+        setThreeWood75Data,
+    } = ThreeWoodStats();
+    const {
+        fiveWood100Data,
+        setFiveWood100Data,
+        fiveWood75Data,
+        setFiveWood75Data,
+    } = FiveWoodData();
+    const {
+        sevenWood100Data,
+        setSevenWood100Data,
+        sevenWood75Data,
+        setSevenWood75Data,
+    } = SevenWoodData();
+
     // const shotWeightedAverage = (arrayUsed) => {
     //     const shotArrayUsed = arrayUsed;
     //     const shotAverage =
@@ -505,27 +541,38 @@ function HomeTabs() {
 
     // Total Shots
     // Total Shot State
-    const [shotCounter100, setShotCounter100] = useState(0);
-    const [shotCounter75, setShotCounter75] = useState(0);
-    const [shotCounter50, setShotCounter50] = useState(0);
-    const [shotCounter25, setShotCounter25] = useState(0);
+    // const [shotCounter100, setShotCounter100] = useState(0);
+    // const [shotCounter75, setShotCounter75] = useState(0);
+    // const [shotCounter50, setShotCounter50] = useState(0);
+    // const [shotCounter25, setShotCounter25] = useState(0);
 
+    // const shotTotalCounter100 = (arrayPlaceholder) => {
+    //     setShotCounter100(arrayPlaceholder.length)
+    //     return shotCounter100
+    // };
     const shotTotalCounter100 = (arrayPlaceholder) => {
-        setShotCounter100(arrayPlaceholder.length)
-        return shotCounter100
+        const counter = arrayPlaceholder.length;
+        setDriverShotCounter100(counter);
+        return counter;
     };
-    const shotTotalCounter75 = (arrayPlaceholder) => {
-        setShotCounter75(arrayPlaceholder.length)
-        return shotCounter75
-    };
-    const shotTotalCounter50 = (arrayPlaceholder) => {
-        setShotCounter50(arrayPlaceholder.length)
-        return shotCounter50
-    };
-    const shotTotalCounter25 = (arrayPlaceholder) => {
-        setShotCounter25(arrayPlaceholder.length)
-        return shotCounter25
-    };
+    // const shotTotalCounter75 = (arrayPlaceholder) => {
+    //     setShotCounter75(arrayPlaceholder.length)
+    //     return shotCounter75
+    // };
+    // const shotTotalCounter50 = (arrayPlaceholder) => {
+    //     setShotCounter50(arrayPlaceholder.length)
+    //     return shotCounter50
+    // };
+    // const shotTotalCounter25 = (arrayPlaceholder) => {
+    //     setShotCounter25(arrayPlaceholder.length)
+    //     return shotCounter25 
+    // };
+    // const shotTotalCounter = (arrayPlaceholder) => {
+    //     const shotCounter = (arrayPlaceholder.length)
+    //     return shotCounter;
+    // };
+
+
 
     // Historical Average
     const calculateHistoricalAverage = (array) => {
@@ -584,19 +631,30 @@ function HomeTabs() {
                         shotWeightedAverage1={shotWeightedAverage1}
                         shotWeightedAverage2={shotWeightedAverage2}
                         // 
+                        // shotTotalCounter={shotTotalCounter}
                         shotTotalCounter100={shotTotalCounter100}
-                        shotTotalCounter75={shotTotalCounter75}
-                        shotTotalCounter50={shotTotalCounter50}
-                        shotTotalCounter25={shotTotalCounter25}
-                        shotCounter100={shotCounter100}
-                        setShotCounter100={setShotCounter100}
-                        shotCounter75={shotCounter75}
-                        setShotCounter75={setShotCounter75}
-                        shotCounter50={shotCounter50}
-                        setShotCounter50={setShotCounter50}
-                        shotCounter25={shotCounter25}
-                        setShotCounter25={setShotCounter25}
+                        // shotTotalCounter75={shotTotalCounter75}
+                        // shotTotalCounter50={shotTotalCounter50}
+                        // shotTotalCounter25={shotTotalCounter25}
+                        // shotCounter100={shotCounter100}
+                        // setShotCounter100={setShotCounter100}
+                        // shotCounter75={shotCounter75}
+                        // setShotCounter75={setShotCounter75}
+                        // shotCounter50={shotCounter50}
+                        // setShotCounter50={setShotCounter50}
+                        // shotCounter25={shotCounter25}
+                        // setShotCounter25={setShotCounter25}
                         // shotAverages={shotAverages}
+                        // New Shot Arrays
+                        driver100Data={driver100Data}
+                        driver75Data={driver75Data}
+                        threeWood100Data={threeWood100Data}
+                        threeWood75Data={threeWood75Data}
+                        fiveWood100Data={fiveWood100Data}
+                        fiveWood75Data={fiveWood75Data}
+                        sevenWood100Data={sevenWood100Data}
+                        sevenWood75Data={sevenWood75Data}
+                        // Old Shot Arrays
                         driver100={driver100}
                         driver75={driver75}
                         threeWood100={threeWood100}
@@ -715,6 +773,23 @@ function HomeTabs() {
                         // handleButtonPressToAddShot={handleButtonPressToAddShot}
                         // shotWeightedAverage={shotWeightedAverage}
                         // shotAverage={shotAverage}
+                        driver100Data={driver100Data}
+                        setDriver100Data={setDriver100Data}
+                        driver75Data={driver75Data}
+                        setDriver75Data={setDriver75Data}
+                        threeWood100Data={threeWood100Data}
+                        setThreeWood100Data={setThreeWood100Data}
+                        threeWood75Data={threeWood75Data}
+                        setThreeWood75Data={setThreeWood75Data}
+                        fiveWood100Data={fiveWood100Data}
+                        setFiveWood100Data={setFiveWood100Data}
+                        fiveWood75Data={fiveWood75Data}
+                        setFiveWood75Data={setFiveWood75Data}
+                        sevenWood100Data={sevenWood100Data}
+                        setSevenWood100Data={setSevenWood100Data}
+                        sevenWood75Data={sevenWood75Data}
+                        setSevenWood75Data={setSevenWood75Data}
+                        // Old Driver
                         driver100={driver100}
                         driver75={driver75}
                         threeWood100={threeWood100}

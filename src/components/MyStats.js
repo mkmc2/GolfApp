@@ -1,3 +1,5 @@
+// Changing all driver100 to Driver100Data and importing it. 
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, FlatList, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import PickerSelect from 'react-native-picker-select';
@@ -23,6 +25,10 @@ export const MyStatsScreen = ({
     // handleButtonPressToAddShot,
     shotArray,
     setShotArray,
+    // New Shot Arrays
+    driver100Data, driver75Data, threeWood100Data, threeWood75Data, fiveWood100Data, fiveWood75Data, sevenWood100Data, sevenWood75Data,
+    // Set New Shot Arrays
+    setDriver100Data, setDriver75Data, setThreeWood100Data, setThreeWood75Data, setFiveWood100Data, setFiveWood75Data, setSevenWood100Data, setSevenWood75Data,
     // Shot Arrays
     driver100, driver75, threeWood100, threeWood75, fiveWood100, fiveWood75, sevenWood100, sevenWood75,
     twoHybrid100, twoHybrid75, threeHybrid100, threeHybrid75, fourHybrid100, fourHybrid75, fiveHybrid100, fiveHybrid75, sixHybrid100, sixHybrid75, sevenHybrid100, sevenHybrid75,
@@ -56,24 +62,24 @@ export const MyStatsScreen = ({
 
     // const [shotTypeDropdownList, setShotTypeDropdownList] = useState([]);
 
-    function renderDriverData({ item }) {
-        return (
-            <View style={{
-                padding: 10,
-                borderRadius: 5,
-                borderWidth: 1,
-                borderColor: '#707070',
-                backgroundColor: 'red',
-            }}>
-                <Text style={[mainStyles.header3, {
-                    // backgroundColor: 'green',
-                    lineHeight: 28,
-                }]}>
-                    {item}
-                </Text>
-            </View>
-        );
-    }
+    // function renderDriverData({ item }) {
+    //     return (
+    //         <View style={{
+    //             padding: 10,
+    //             borderRadius: 5,
+    //             borderWidth: 1,
+    //             borderColor: '#707070',
+    //             backgroundColor: 'red',
+    //         }}>
+    //             <Text style={[mainStyles.header3, {
+    //                 // backgroundColor: 'green',
+    //                 lineHeight: 28,
+    //             }]}>
+    //                 {item.distance}
+    //             </Text>
+    //         </View>
+    //     );
+    // }
 
     //rework 
     function renderDriverData({ item }) {
@@ -99,6 +105,8 @@ export const MyStatsScreen = ({
                         paddingHorizontal: 10,
                     }]}>
                         {item}
+
+                        {/* {item.distance} */}
                     </Text>
                 </View>
             </TouchableOpacity>
@@ -113,42 +121,47 @@ export const MyStatsScreen = ({
 
     const ShotData = (clubSelected, selectedPower, selectedLabel) => {
         // Woods
+        // if (clubSelected === 'Driver' && selectedPower === 100) {
+        //     const shotArray = driver100Data;
+        //     console.log('Returned array:', shotArray);
+        //     return shotArray;
+        // } else if (clubSelected === 'Driver' && selectedPower === 75) {
         if (clubSelected === 'Driver' && selectedPower === 100) {
-            const shotArray = driver100;
+            const shotArray = driver100Data;
             console.log('Returned array:', shotArray);
             return shotArray;
         } else if (clubSelected === 'Driver' && selectedPower === 75) {
-            const shotArray = driver75;
+            const shotArray = driver75Data;
             console.log('Returned array:', shotArray);
             return shotArray;
         }
         else if (clubSelected === '3 Wood' && selectedPower === 100) {
-            const shotArray = threeWood100;
+            const shotArray = threeWood100Data;
             console.log('Returned array:', shotArray);
             return shotArray;
         }
         else if (clubSelected === '3 Wood' && selectedPower === 75) {
-            const shotArray = threeWood75;
+            const shotArray = threeWood75Data;
             console.log('Returned array:', shotArray);
             return shotArray;
         }
         else if (clubSelected === '5 Wood' && selectedPower === 100) {
-            const shotArray = fiveWood100;
+            const shotArray = fiveWood100Data;
             console.log('Returned array:', shotArray);
             return shotArray;
         }
         else if (clubSelected === '5 Wood' && selectedPower === 75) {
-            const shotArray = fiveWood75;
+            const shotArray = fiveWood75Data;
             console.log('Returned array:', shotArray);
             return shotArray;
         }
         else if (clubSelected === '7 Wood' && selectedPower === 100) {
-            const shotArray = sevenWood100;
+            const shotArray = sevenWood100Data;
             console.log('Returned array:', shotArray);
             return shotArray;
         }
         else if (clubSelected === '7 Wood' && selectedPower === 75) {
-            const shotArray = sevenWood75;
+            const shotArray = sevenWood75Data;
             console.log('Returned array:', shotArray);
             return shotArray;
         }
@@ -554,83 +567,48 @@ export const MyStatsScreen = ({
             return <Text>Select shot</Text>
     };
 
-    // const handleButtonPress = (shotArray) => {
-    //     if (newShotDistance !== '') {
-    //         const distance = parseInt(newShotDistance);
-    //         setShotArray([distance, ...shotArray]);
-    //         setNewShotDistance('');
-    //     }
-    // };
-    // const handleButtonPress = () => {
-    //     if (newShotDistance !== '') {
-    //         const distance = parseInt(newShotDistance);
-    //         setDriver100([distance, ...driver100]);
-    //         setNewShotDistance('');
-    //     }
-    // };
-
-    // const handleButtonPress = () => {
-    //     if (newShotDistance !== '') {
-    //         const distance = parseInt(newShotDistance);
-    //         let updatedArray;
-
-    //         if (clubSelected === 'Driver' && selectedPower === 100) {
-    //             updatedArray = [...driver100];
-    //         } else if (clubSelected === 'Driver' && selectedPower === 75) {
-    //             updatedArray = [...driver75];
-    //         } else {
-    //             // Add more conditions for other combinations if needed
-    //             // For example: else if (clubSelected === 'Iron' && selectedPower === 100)
-    //             //             { updatedArray = [...iron100]; }
-    //             //             else if (clubSelected === 'Hybrid' && selectedPower === 100)
-    //             //             { updatedArray = [...hybrid100]; }
-    //             //             ...
-    //         }
-
-    //         if (updatedArray) {
-    //             updatedArray.unshift(distance);
-    //             setDriver100(updatedArray);
-    //         }
-
-    //         setNewShotDistance('');
-    //     }
-    // };
     const handleButtonPress = () => {
         if (newShotDistance !== '') {
             const distance = parseInt(newShotDistance);
             let updatedArray;
+            //Adding this:
+            let updatedData;
             // Woods
             if (clubSelected === 'Driver' && selectedPower === 100) {
-                updatedArray = [distance, ...driver100];
-                setDriver100(updatedArray);
+                updatedArray = [distance, ...driver100Data];
+                setDriver100Data(updatedArray);
+                // updatedArray = [{ distance, key: driver100Data.length + 1 }, ...driver100Data];
+                // updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+                // setDriver100Data(updatedData);
+                // console.log(driver100Data)
             }
             else if (clubSelected === 'Driver' && selectedPower === 75) {
-                updatedArray = [distance, ...driver75];
-                setDriver75(updatedArray);
+                updatedArray = [distance, ...driver75Data];
+                setDriver75Data(updatedArray);
             }
             else if (clubSelected === '3 Wood' && selectedPower === 100) {
-                updatedArray = [distance, ...threeWood100];
-                setThreeWood100(updatedArray);
+                updatedArray = [distance, ...threeWood100Data];
+                setThreeWood100Data(updatedArray);
             }
             else if (clubSelected === '3 Wood' && selectedPower === 75) {
-                updatedArray = [distance, ...threeWood75];
-                setThreeWood75(updatedArray);
+                updatedArray = [distance, ...threeWood75Data];
+                setThreeWood75Data(updatedArray);
             }
             else if (clubSelected === '5 Wood' && selectedPower === 100) {
-                updatedArray = [distance, ...fiveWood100];
-                setFiveWood100(updatedArray);
+                updatedArray = [distance, ...fiveWood100Data];
+                setFiveWood100Data(updatedArray);
             }
             else if (clubSelected === '5 Wood' && selectedPower === 75) {
-                updatedArray = [distance, ...fiveWood75];
-                setFiveWood75(updatedArray);
+                updatedArray = [distance, ...fiveWood75Data];
+                setFiveWood75Data(updatedArray);
             }
             else if (clubSelected === '7 Wood' && selectedPower === 100) {
-                updatedArray = [distance, ...sevenWood100];
-                setSevenWood100(updatedArray);
+                updatedArray = [distance, ...sevenWood100Data];
+                setSevenWood100Data(updatedArray);
             }
             else if (clubSelected === '7 Wood' && selectedPower === 75) {
-                updatedArray = [distance, ...sevenWood75];
-                setSevenWood75(updatedArray);
+                updatedArray = [distance, ...sevenWood75Data];
+                setSevenWood75Data(updatedArray);
             }
             // Hybrids
             else if (clubSelected === '2 Hybrid' && selectedPower === 100) {
@@ -942,7 +920,7 @@ export const MyStatsScreen = ({
             setNewShotDistance('');
             console.log(updatedArray)
             console.log(driver75)
-            console.log(driver100)
+            console.log(driver100Data)
             // console.log(handleButtonPress())
         }
     };

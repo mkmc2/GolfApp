@@ -1,3 +1,4 @@
+// Changing driver100 to driver100Data 6.3.23
 import React, { useState } from 'react';
 import {
     SafeAreaView,
@@ -20,13 +21,22 @@ import mainStyles from '../styles/mainStyles';
 import { clubsInMyBag2 } from '../data/clubsInMyBag';
 import DriverRowComponent from './clubDataComponents/DriverRowComponent';
 import { twoHybrid75 } from '../data/shotData/MyShots';
+import { historicalAverage } from '../data/Formulas';
 
 
 const MyBagScreen = ({ navigation,
     // Calculations
     shotWeightedAverage, shotWeightedAverage1, shotWeightedAverage2,
-    shotTotalCounter100, shotTotalCounter75, shotTotalCounter50, shotTotalCounter25,
-    shotCounter100, setShotCounter100, shotCounter75, setShotCounter75, shotCounter50, setShotCounter50, shotCounter25, setShotCounter25,
+    shotTotalCounter100,
+    // New Woods
+    //Driver
+    driver100Data, driver75Data,
+    //Three Wood
+    threeWood100Data, threeWood75Data,
+    //Five Wood
+    fiveWood100Data, fiveWood75Data,
+    // Seven Wood
+    sevenWood100Data, sevenWood75Data,
     // Woods
     driver100, driver75, threeWood100, threeWood75, fiveWood100, fiveWood75, sevenWood100, sevenWood75,
     twoHybrid100, twoHybrid75, threeHybrid100, threeHybrid75, fourHybrid100, fourHybrid75,
@@ -64,74 +74,11 @@ const MyBagScreen = ({ navigation,
         return average;
     };
 
-    // const shotWeightedAverageREAL = (arrayUsed) => {
-    //     if (arrayUsed.length > 5 && arrayUsed.length < 10) {
-    //         // const shotArrayUsed = arrayUsed;
-    //         // const numerator = (shotArrayUsed[0] * 10) + (shotArrayUsed[1] * 10) + (shotArrayUsed[2] * 10) + (shotArrayUsed[3] * 10) + (shotArrayUsed[4] * 10);
-    //         // const denominator = 10 + 10 + 10 + 10 + 10;
-    //         // return Math.round(numerator / denominator);
+    // const shotTotalCounter = (arrayPlaceholder) => {
+    //     const shotCounter = (arrayPlaceholder.length)
+    //     return shotCounter;
+    // };
 
-    //         // if (arrayUsed.length === 0) {
-    //         //     return 0; // Return 0 if the array is empty to avoid division by zero
-    //         // }
-
-    //         // // const numerator = arrayUsed.reduce((acc, value) => acc + value, 0);
-    //         // const numerator = (arrayUsed[0] + arrayUsed[1] + arrayUsed[2] + arrayUsed[3] + arrayUsed[4] + arrayUsed[5])
-    //         // const denominator = arrayUsed.length;
-    //         // return Math.round(numerator / denominator);
-    //         if (arrayUsed.length === 0) {
-    //             return 0; // Return 0 if the array is empty to avoid division by zero
-    //         }
-
-    //         const numerator = arrayUsed.reduce((acc, value) => acc + value, 0);
-    //         const denominator = arrayUsed.length;
-    //         return Math.round(numerator / denominator);
-    //     } else if (driver100.length > 10 && driver100.length < 20) {
-    //         const shotArrayUsed = arrayUsed;
-    //         const numerator =
-    //             (shotArrayUsed[0] * 10) +
-    //             (shotArrayUsed[1] * 10) +
-    //             (shotArrayUsed[2] * 10) +
-    //             (shotArrayUsed[3] * 10) +
-    //             (shotArrayUsed[4] * 10) +
-    //             (shotArrayUsed[5] * 10) +
-    //             (shotArrayUsed[6] * 10) +
-    //             (shotArrayUsed[7] * 10) +
-    //             (shotArrayUsed[8] * 10) +
-    //             (shotArrayUsed[9] * 10);
-    //         const denominator = 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10;
-    //         return Math.round(numerator / denominator);
-    //     } else {
-    //         const shotWeightedAverage2 = (arrayUsed) => {
-    //             const shotArrayUsed = arrayUsed;
-    //             const numerator =
-    //                 (shotArrayUsed[0] * 10) +
-    //                 (shotArrayUsed[1] * 10) +
-    //                 (shotArrayUsed[2] * 10) +
-    //                 (shotArrayUsed[3] * 10) +
-    //                 (shotArrayUsed[4] * 10) +
-    //                 (shotArrayUsed[5] * 10) +
-    //                 (shotArrayUsed[6] * 10) +
-    //                 (shotArrayUsed[7] * 10) +
-    //                 (shotArrayUsed[8] * 10) +
-    //                 (shotArrayUsed[9] * 10) +
-    //                 (shotArrayUsed[10] * 6) +
-    //                 (shotArrayUsed[11] * 6) +
-    //                 (shotArrayUsed[12] * 6) +
-    //                 (shotArrayUsed[13] * 6) +
-    //                 (shotArrayUsed[14] * 6) +
-    //                 (shotArrayUsed[15] * 6) +
-    //                 (shotArrayUsed[16] * 6) +
-    //                 (shotArrayUsed[17] * 6) +
-    //                 (shotArrayUsed[18] * 6) +
-    //                 (shotArrayUsed[19] * 6);
-    //             const denominator = 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 10 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6 + 6;
-    //             return Math.round(numerator / denominator);
-    //         }
-    //     };
-    // }
-    // Button Group
-    // const [text, setText] = useState('Press any button');
     // Open Expanded View
     const [expandedItems, setExpandedItems] = useState({});
     const openExpandedShotView = (item) => {
@@ -145,36 +92,25 @@ const MyBagScreen = ({ navigation,
     // const selectedShotArray = driver100;
 
     const minNumOfShots = 1
+    // const average100 = 0;
+    // const average75 = 0;
+    const histAve100 = 0;
+    const histAve75 = 0;
     const renderClubItem = ({ item, distance100, distance75, title100, title75, itemClub, itemId }) => {
 
         shotFunction100 = () => {
             // Woods
-            if (item.value === 'driver' && driver100.length > 5) {
-                // const shotAverage100 = driver100[0]
-                // const shotAverage100 = ((driver100[0] + driver100[1] + driver100[2]) / 3)
-                // const shotAverage100 = Math.ceil(driver100Average);
-                // const shotAverage100 = Math.round(driver100Average);
-                // return shotAverage100
-                // return shotWeightedAverage(driver100);
-                // shotTotalCounter100(driver100)
-                // if (driver100.length > 5 && driver100.length < 10) {
-                //     return shotWeightedAverage(driver100);
-                // } else if (driver100.length > 10 && driver100.length < 20) {
-                //     return shotWeightedAverage1(driver100);
-                // } else {
-                //     return shotWeightedAverage2(driver100);
-                // }
-                return shotWeightedAverage(driver100);
-
+            if (item.value === 'driver' && driver100Data.length > 5) {
+                return shotWeightedAverage(driver100Data);
             }
-            else if (item.value === '3wood' && threeWood100.length > minNumOfShots) {
-                return shotWeightedAverage(threeWood100);
+            else if (item.value === '3wood' && threeWood100Data.length > minNumOfShots) {
+                return shotWeightedAverage(threeWood100Data);
             }
-            else if (item.value === '5wood' && fiveWood100.length > minNumOfShots) {
-                return shotWeightedAverage(fiveWood100);
+            else if (item.value === '5wood' && fiveWood100Data.length > minNumOfShots) {
+                return shotWeightedAverage(fiveWood100Data);
             }
-            else if (item.value === '7wood' && sevenWood100.length > minNumOfShots) {
-                return shotWeightedAverage(sevenWood100);
+            else if (item.value === '7wood' && sevenWood100Data.length > minNumOfShots) {
+                return shotWeightedAverage(sevenWood100Data);
             }
             // Hybrids
             else if (item.value === '2hybrid' && twoHybrid100.length > minNumOfShots) {
@@ -252,23 +188,17 @@ const MyBagScreen = ({ navigation,
         }
         shotFunction75 = () => {
             // Driver
-            if (item.value === 'driver' && driver75.length > 5) {
-                // const shotAverage75 = driver75[0]
-                // return shotAverage75
-                // return [shotWeightedAverage(driver75), shotTotalCounter75(driver75)];
-                return [shotWeightedAverageREAL(driver75), shotTotalCounter75(driver75)];
+            if (item.value === 'driver' && driver75Data.length > 5) {
+                return shotWeightedAverage(driver75Data);
             }
-            else if (item.value === '3wood' && threeWood75.length > 0) {
-                const shotAverage75 = threeWood75[0]
-                return shotAverage75
+            else if (item.value === '3wood' && threeWood75Data.length > 0) {
+                return shotWeightedAverage(threeWood75Data);
             }
-            else if (item.value === '5wood' && fiveWood75.length > 0) {
-                const shotAverage75 = fiveWood75[0]
-                return shotAverage75
+            else if (item.value === '5wood' && fiveWood75Data.length > 0) {
+                return shotWeightedAverage(fiveWood75Data);
             }
-            else if (item.value === '7wood' && sevenWood75.length > 0) {
-                const shotAverage75 = sevenWood75[0]
-                return shotAverage75
+            else if (item.value === '7wood' && sevenWood75Data.length > 0) {
+                return shotWeightedAverage(sevenWood75Data);
             }
             // Hybrids
             else if (item.value === '2hybrid' && twoHybrid75.length > 0) {
@@ -556,97 +486,6 @@ const MyBagScreen = ({ navigation,
         const fiftyShotLabel = fiftyShotLabelFunction();
         const twentyFiveShotLabel = twentyFiveShotLabelFunction();
 
-        // const shotTotalFunction100 = () => {
-        //     // Woods
-        //     if (item.value === 'driver') {
-        //         return setShotCounter100(shotTotalCounter100(driver100));
-        //     }
-        //     else if (item.value === '3wood') {
-        //         return shotTotalCounter100(threeWood100);
-        //     }
-        //     else if (item.value === '5wood') {
-        //         return shotTotalCounter100(fiveWood100);
-        //     }
-        //     else if (item.value === '7wood') {
-        //         return shotTotalCounter100(sevenWood100);
-        //     }
-        //     // Hybrids
-        //     else if (item.value === '2hybrid') {
-        //         return shotTotalCounter100(twoHybrid100);
-        //     }
-        //     else if (item.value === '3hybrid') {
-        //         return shotTotalCounter100(threeHybrid100);
-        //     }
-        //     else if (item.value === '4hybrid') {
-        //         return shotTotalCounter100(fourHybrid100);
-        //     }
-        //     else if (item.value === '5hybrid') {
-        //         return shotTotalCounter100(fiveHybrid100);
-        //     }
-        //     else if (item.value === '6hybrid') {
-        //         return shotTotalCounter100(sixHybrid100);
-        //     }
-        //     else if (item.value === '7hybrid') {
-        //         return shotTotalCounter100(sevenHybrid100);
-        //     }
-        //     // Irons
-        //     else if (item.value === '2Iron') {
-        //         return shotTotalCounter100(twoIron100);
-        //     }
-        //     else if (item.value === '3Iron') {
-        //         return shotTotalCounter100(threeIron100);
-        //     }
-        //     else if (item.value === '4Iron') {
-        //         return shotTotalCounter100(fourIron100);
-        //     }
-        //     else if (item.value === '5Iron') {
-        //         return shotTotalCounter100(fiveIron100);
-        //     }
-        //     else if (item.value === '6Iron') {
-        //         return shotTotalCounter100(sixIron100);
-        //     }
-        //     else if (item.value === '7Iron') {
-        //         return shotTotalCounter100(sevenIron100);
-        //     }
-        //     else if (item.value === '8Iron') {
-        //         return shotTotalCounter100(eightIron100);
-        //     }
-        //     else if (item.value === '9Iron') {
-        //         return shotTotalCounter100(nineIron100);
-        //     }
-        //     // Wedge 
-        //     else if (item.value === 'Pwedge') {
-        //         return shotTotalCounter100(pWedge100);
-        //     }
-        //     else if (item.value === '48wedge') {
-        //         return shotTotalCounter100(forty8Wedge100);
-        //     }
-        //     else if (item.value === '50wedge') {
-        //         return shotTotalCounter100(fiftyWedge100);
-        //     }
-        //     else if (item.value === '52wedge') {
-        //         return shotTotalCounter100(fifty2Wedge100);
-        //     }
-        //     else if (item.value === '54wedge') {
-        //         return shotTotalCounter100(fifty4Wedge100);
-        //     }
-        //     else if (item.value === '56wedge') {
-        //         return shotTotalCounter100(fifty6Wedge100);
-        //     }
-        //     else if (item.value === '58wedge') {
-        //         return shotTotalCounter100(fifty8Wedge100)
-        //     }
-        //     else if (item.value === '60wedge') {
-        //         return shotTotalCounter100(sixtyWedge100)
-        //     }
-        //     // null
-        //     else {
-        //         return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11, }]}>not enough data</Text>
-        //     }
-        // };
-
-
-
         if (item.clubType === 'wood' || item.clubType === 'hybrid') {
             return (
                 // <Text key={item.id}>{item.club}</Text>
@@ -701,11 +540,11 @@ const MyBagScreen = ({ navigation,
                             <View style={{ paddingVertical: 10, }}>
                                 <View style={{ backgroundColor: '#eee', paddingHorizontal: 10, }}>
                                     <Text>Counter 100</Text>
-                                    <Text>{shotCounter100}</Text>
+                                    <Text>0</Text>
                                 </View>
                                 <View style={{ backgroundColor: '#eee', paddingHorizontal: 10, }}>
                                     <Text>Counter 75</Text>
-                                    <Text>{shotCounter75}</Text>
+                                    <Text>0</Text>
                                 </View>
                             </View>
                         )
