@@ -1,28 +1,128 @@
-// Historical Average
-export function historicalAverage(array) {
-    if (array.length === 0) {
-        return 0; // Return 0 if the array is empty to avoid division by zero
+import React, { useState } from "react";
+
+export const StatCalculations = () => {
+
+    const [shotMean100, setShotMean100] = useState(0);
+    const [shotMean75, setShotMean75] = useState(0);
+    const [shotMean50, setShotMean50] = useState(0);
+    const [shotMean25, setShotMean25] = useState(0);
+
+    const [meanValues, setMeanValues] = useState({});
+
+    // Function to calculate mean and total shots
+    // const calculateStats = (array) => {
+    //     const totalShots = array.length;
+    //     const distances = array.map((shot) => shot.distance); // Extract the distances from each shot
+    //     const sum = distances.reduce((acc, distance) => acc + distance, 0);
+    //     const mean = totalShots > 0 ? Math.round(sum / totalShots) : 0;
+    //     const upperVariance = Math.round(Math.max(...distances) - mean);
+    //     const lowerVariance = Math.round(Math.min(...distances) - mean);
+    //     return { totalShots, mean, upperVariance, lowerVariance };
+    // };
+    const calculateStats = (array, setArray) => {
+        const totalShots = array.length;
+        const distances = array.map((shot) => shot.distance); // Extract the distances from each shot
+        const sum = distances.reduce((acc, distance) => acc + distance, 0);
+        const mean = totalShots > 0 ? Math.round(sum / totalShots) : 0;
+        const upperVariance = Math.round(Math.max(...distances) - mean);
+        const lowerVariance = Math.round(Math.min(...distances) - mean);
+        return { totalShots, mean, upperVariance, lowerVariance };
+    };
+
+    function calculateWeightedAverage(array) {
+        const firstSetWeight = 0.5; // Weight for the first set of values (1-10)
+        const secondSetWeight = 0.3; // Weight for the second set of values (11-20)
+        const thirdSetWeight = 0.2; // Weight for the third set of values (21-30)
+
+        let sum = 0;
+        let weightSum = 0;
+
+        for (let i = 0; i < array.length && i < 30; i++) {
+            let weight;
+
+            if (i < 10) {
+                weight = firstSetWeight;
+            } else if (i < 20) {
+                weight = secondSetWeight;
+            } else {
+                weight = thirdSetWeight;
+            }
+
+            sum += array[i].distance * weight;
+            weightSum += weight;
+        }
+
+        if (weightSum === 0) {
+            return 0; // Handle the case when there are no valid values in the array
+        }
+
+        return Math.round(sum / weightSum);
     }
 
-    const sum = array.reduce((acc, value) => acc + value, 0);
-    const mean = sum / array.length;
-    return mean;
-}
+    const shotMeanFunction100 = (arrayUsed) => {
+        const distances = arrayUsed.map(item => item.distance);
+        if (distances.length === 0) {
+            return 0; // Return 0 if the array is empty
+        }
 
-// Shot Counter
-export function shotCounter100(array) {
-    const counter100 = array.length
-    return counter100
-}
-export function shotCounter75(array) {
-    const counter75 = array.length
-    return counter75
-}
-export function shotCounter50(array) {
-    const counter50 = array.length
-    return counter50
-}
-export function shotCounter25(array) {
-    const counter25 = array.length
-    return counter25
-}
+        const sum = distances.reduce((acc, value) => acc + value, 0);
+        const average = Math.round(sum / distances.length);
+        return average;
+    };
+    const shotMeanFunction75 = (arrayUsed) => {
+        const distances = arrayUsed.map(item => item.distance);
+        if (distances.length === 0) {
+            // setShotMean75(0); // Update state value with 0 if the array is empty
+            return 0;
+        }
+
+        const sum = distances.reduce((acc, value) => acc + value, 0);
+        const average = Math.round(sum / distances.length);
+        // setShotMean75(average); // Update state value with the calculated average
+        return average;
+    };
+    const shotMeanFunction50 = (arrayUsed) => {
+        const distances = arrayUsed.map(item => item.distance);
+        if (distances.length === 0) {
+            // setShotMean75(0); // Update state value with 0 if the array is empty
+            return 0;
+        }
+
+        const sum = distances.reduce((acc, value) => acc + value, 0);
+        const average = Math.round(sum / distances.length);
+        // setShotMean75(average); // Update state value with the calculated average
+        return average;
+    };
+    const shotMeanFunction25 = (arrayUsed) => {
+        const distances = arrayUsed.map(item => item.distance);
+        if (distances.length === 0) {
+            // setShotMean75(0); // Update state value with 0 if the array is empty
+            return 0;
+        }
+
+        const sum = distances.reduce((acc, value) => acc + value, 0);
+        const average = Math.round(sum / distances.length);
+        // setShotMean75(average); // Update state value with the calculated average
+        return average;
+    };
+
+
+    return {
+        calculateStats,
+        shotMeanFunction100,
+        shotMeanFunction75,
+        shotMeanFunction50,
+        shotMeanFunction25,
+        shotMean100,
+        shotMean75,
+        shotMean50,
+        shotMean25,
+        setShotMean100,
+        setShotMean75,
+        setShotMean50,
+        setShotMean25,
+
+    };
+};
+
+export default StatCalculations;

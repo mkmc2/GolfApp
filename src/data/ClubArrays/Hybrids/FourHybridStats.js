@@ -84,16 +84,22 @@ export const FourHybridData = () => {
         // Shot Totals
         fourHybridShotCounter100,
         setFourHybridShotCounter100,
-        fourHybridShotTotalCounter100,
         fourHybridShotCounter75,
-        // Historical Value
-        calculateHistoricalAverageFourHybrid100,
-        calculateHistoricalAverageFourHybrid75,
+        setFourHybridShotCounter75,
+        // Historical Average
+        historicalAverageFourHybrid100,
+        setHistoricalAverageFourHybrid100,
+        historicalAverageFourHybrid75,
+        setHistoricalAverageFourHybrid75,
         // Variance
-        calculateHighVarianceFourHybrid100,
-        calculateHighVarianceFourHybrid75,
-        calculateLowVarianceFourHybrid100,
-        calculateLowVarianceFourHybrid75,
+        highVarianceFourHybrid100,
+        setHighVarianceFourHybrid100,
+        highVarianceFourHybrid75,
+        setHighVarianceFourHybrid75,
+        lowVarianceFourHybrid100,
+        setLowVarianceFourHybrid100,
+        lowVarianceFourHybrid75,
+        setLowVarianceFourHybrid75,
     };
 };
 

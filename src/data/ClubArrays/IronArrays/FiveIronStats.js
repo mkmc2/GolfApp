@@ -20,8 +20,12 @@ export const FiveIronData = () => {
     // Variance
     const [highVarianceFiveIron100, setHighVarianceFiveIron100] = useState();
     const [highVarianceFiveIron75, setHighVarianceFiveIron75] = useState();
+    const [highVarianceFiveIron50, setHighVarianceFiveIron50] = useState();
+    const [highVarianceFiveIron25, setHighVarianceFiveIron25] = useState();
     const [lowVarianceFiveIron100, setLowVarianceFiveIron100] = useState();
     const [lowVarianceFiveIron75, setLowVarianceFiveIron75] = useState();
+    const [lowVarianceFiveIron50, setLowVarianceFiveIron50] = useState();
+    const [lowVarianceFiveIron25, setLowVarianceFiveIron25] = useState();
 
     // Five Iron Weighted Average
 
@@ -120,26 +124,38 @@ export const FiveIronData = () => {
         // Shot Totals
         fiveIronShotCounter100,
         setFiveIronShotCounter100,
-        fiveIronShotTotalCounter100,
         fiveIronShotCounter75,
         setFiveIronShotCounter75,
-        fiveIronShotTotalCounter75,
         fiveIronShotCounter50,
         setFiveIronShotCounter50,
-        fiveIronShotTotalCounter50,
         fiveIronShotCounter25,
         setFiveIronShotCounter25,
-        fiveIronShotTotalCounter25,
         // Historical Value
-        calculateHistoricalAverageFiveIron100,
-        calculateHistoricalAverageFiveIron75,
-        calculateHistoricalAverageFiveIron50,
-        calculateHistoricalAverageFiveIron25,
+        historicalAverageFiveIron100,
+        setHistoricalAverageFiveIron100,
+        historicalAverageFiveIron75,
+        setHistoricalAverageFiveIron75,
+        historicalAverageFiveIron50,
+        setHistoricalAverageFiveIron50,
+        historicalAverageFiveIron25,
+        setHistoricalAverageFiveIron25,
         // Variance
-        calculateHighVarianceFiveIron100,
-        calculateHighVarianceFiveIron75,
-        calculateLowVarianceFiveIron100,
-        calculateLowVarianceFiveIron75,
+        highVarianceFiveIron100,
+        setHighVarianceFiveIron100,
+        highVarianceFiveIron75,
+        setHighVarianceFiveIron75,
+        highVarianceFiveIron50,
+        setHighVarianceFiveIron50,
+        highVarianceFiveIron25,
+        setHighVarianceFiveIron25,
+        lowVarianceFiveIron100,
+        setLowVarianceFiveIron100,
+        lowVarianceFiveIron75,
+        setLowVarianceFiveIron75,
+        lowVarianceFiveIron50,
+        setLowVarianceFiveIron50,
+        lowVarianceFiveIron25,
+        setLowVarianceFiveIron25,
     };
 };
 

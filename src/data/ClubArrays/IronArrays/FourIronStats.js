@@ -20,8 +20,12 @@ export const FourIronData = () => {
     // Variance
     const [highVarianceFourIron100, setHighVarianceFourIron100] = useState();
     const [highVarianceFourIron75, setHighVarianceFourIron75] = useState();
+    const [highVarianceFourIron50, setHighVarianceFourIron50] = useState();
+    const [highVarianceFourIron25, setHighVarianceFourIron25] = useState();
     const [lowVarianceFourIron100, setLowVarianceFourIron100] = useState();
     const [lowVarianceFourIron75, setLowVarianceFourIron75] = useState();
+    const [lowVarianceFourIron50, setLowVarianceFourIron50] = useState();
+    const [lowVarianceFourIron25, setLowVarianceFourIron25] = useState();
 
     // Four Iron Weighted Average
 
@@ -107,25 +111,63 @@ export const FourIronData = () => {
         setLowVarianceFourIron75(lowestValue - historicalAverage);
         return lowVarianceFourIron75;
     }
+    const calculateLowVarianceFourIron50 = () => {
+        const historicalAverage = historicalAverageFourIron50;
+        const lowestValue = Math.min(...fourIron50Data);
+        setLowVarianceFourIron50(lowestValue - historicalAverage);
+        return lowVarianceFourIron50;
+    }
+    const calculateLowVarianceFourIron25 = () => {
+        const historicalAverage = historicalAverageFourIron25;
+        const lowestValue = Math.min(...fourIron25Data);
+        setLowVarianceFourIron25(lowestValue - historicalAverage);
+        return lowVarianceFourIron25;
+    }
 
     return {
         fourIron100Data,
         setFourIron100Data,
         fourIron75Data,
         setFourIron75Data,
+        fourIron50Data,
+        setFourIron50Data,
+        fourIron25Data,
+        setFourIron25Data,
         // Shot Totals
         fourIronShotCounter100,
         setFourIronShotCounter100,
-        fourIronShotTotalCounter100,
         fourIronShotCounter75,
+        setFourIronShotCounter75,
+        fourIronShotCounter50,
+        setFourIronShotCounter50,
+        fourIronShotCounter25,
+        setFourIronShotCounter25,
         // Historical Value
-        calculateHistoricalAverageFourIron100,
-        calculateHistoricalAverageFourIron75,
+        historicalAverageFourIron100,
+        setHistoricalAverageFourIron100,
+        historicalAverageFourIron75,
+        setHistoricalAverageFourIron75,
+        historicalAverageFourIron50,
+        setHistoricalAverageFourIron50,
+        historicalAverageFourIron25,
+        setHistoricalAverageFourIron25,
         // Variance
-        calculateHighVarianceFourIron100,
-        calculateHighVarianceFourIron75,
-        calculateLowVarianceFourIron100,
-        calculateLowVarianceFourIron75,
+        highVarianceFourIron100,
+        setHighVarianceFourIron100,
+        highVarianceFourIron75,
+        setHighVarianceFourIron75,
+        highVarianceFourIron50,
+        setHighVarianceFourIron50,
+        highVarianceFourIron25,
+        setHighVarianceFourIron25,
+        lowVarianceFourIron100,
+        setLowVarianceFourIron100,
+        lowVarianceFourIron75,
+        setLowVarianceFourIron75,
+        lowVarianceFourIron50,
+        setLowVarianceFourIron50,
+        lowVarianceFourIron25,
+        setLowVarianceFourIron25,
     };
 };
 

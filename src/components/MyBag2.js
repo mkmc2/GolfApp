@@ -15,8 +15,6 @@ import mainStyles from '../styles/mainStyles';
 
 // Data
 import { clubsInMyBag2 } from '../data/clubsInMyBag';
-import DriverRowComponent from './clubDataComponents/DriverRowComponent';
-import { twoHybrid75 } from '../data/shotData/MyShots';
 
 
 const MyBagScreen = ({ navigation, driver100, driver75, threeWood100, threeWood75, fiveWood100, fiveWood75, sevenWood100, sevenWood75,

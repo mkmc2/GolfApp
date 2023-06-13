@@ -84,16 +84,22 @@ export const SevenHybridData = () => {
         // Shot Totals
         sevenHybridShotCounter100,
         setSevenHybridShotCounter100,
-        sevenHybridShotTotalCounter100,
         sevenHybridShotCounter75,
-        // Historical Value
-        calculateHistoricalAverageSevenHybrid100,
-        calculateHistoricalAverageSevenHybrid75,
+        setSevenHybridShotCounter75,
+        // Historical Average
+        historicalAverageSevenHybrid100,
+        setHistoricalAverageSevenHybrid100,
+        historicalAverageSevenHybrid75,
+        setHistoricalAverageSevenHybrid75,
         // Variance
-        calculateHighVarianceSevenHybrid100,
-        calculateHighVarianceSevenHybrid75,
-        calculateLowVarianceSevenHybrid100,
-        calculateLowVarianceSevenHybrid75,
+        highVarianceSevenHybrid100,
+        setHighVarianceSevenHybrid100,
+        highVarianceSevenHybrid75,
+        setHighVarianceSevenHybrid75,
+        lowVarianceSevenHybrid100,
+        setLowVarianceSevenHybrid100,
+        lowVarianceSevenHybrid75,
+        setLowVarianceSevenHybrid75,
     };
 };
 

@@ -84,10 +84,22 @@ export const TwoHybridData = () => {
         // Shot Totals
         twoHybridShotCounter100,
         setTwoHybridShotCounter100,
-        twoHybridShotTotalCounter100,
         twoHybridShotCounter75,
-        // Historical Value
-        calculateHistoricalAverageTwoHybrid100,
+        setTwoHybridShotCounter75,
+        // Historical Average
+        historicalAverageTwoHybrid100,
+        setHistoricalAverageTwoHybrid100,
+        historicalAverageTwoHybrid75,
+        setHistoricalAverageTwoHybrid75,
+        // Variance
+        highVarianceTwoHybrid100,
+        setHighVarianceTwoHybrid100,
+        highVarianceTwoHybrid75,
+        setHighVarianceTwoHybrid75,
+        lowVarianceTwoHybrid100,
+        setLowVarianceTwoHybrid100,
+        lowVarianceTwoHybrid75,
+        setLowVarianceTwoHybrid75,
     };
 };
 
