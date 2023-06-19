@@ -482,6 +482,7 @@ function HomeTabs() {
         setShotMean50,
         setShotMean25,
         calculateStats,
+        calculateWeightedAverage,
     } = StatCalculations();
     const {
         // Shot Array
@@ -1627,6 +1628,7 @@ function HomeTabs() {
                 {(props) => (
                     <ClubPickerScreen
                         // shotWeightedAverage={shotWeightedAverage}
+                        calculateWeightedAverage={calculateWeightedAverage}
                         setClubSelected={setClubSelected}
                         clubsInMyBag2={clubsInMyBag2}
                         calculateStats={calculateStats}
@@ -2812,6 +2814,7 @@ function HomeTabs() {
                         setLowVarianceSixtyWedge25={setLowVarianceSixtyWedge25}
 
                         // Calculations
+                        calculateWeightedAverage={calculateWeightedAverage}
                         calculateStats={calculateStats}
                         shotMeanFunction100={shotMeanFunction100}
                         shotMeanFunction75={shotMeanFunction75}

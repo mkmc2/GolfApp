@@ -4,13 +4,14 @@ import mainStyles from '../styles/mainStyles';
 
 // Club Data
 import {
-    calculateStats, updateDriver100WeightedAve, updateDriver75WeightedAve, driver100WeightedAverage, driver75WeightedAverage,
+    calculateStats,
 
 } from '../data/ClubArrays/DriverStats';
 
-export const ClubPickerScreen = ({ clubsInMyBag2, clubSelected, setClubSelected,
+export const ClubPickerScreen = ({
+    clubsInMyBag2, calculateWeightedAverage, shotMeanFunction100,
     // New Shot Arrays
-    driver100Data, shotMeanFunction100, driver75Data, threeWood100Data, threeWood75Data, fiveWood100Data, fiveWood75Data, sevenWood100Data, sevenWood75Data,
+    driver100Data, driver75Data, threeWood100Data, threeWood75Data, fiveWood100Data, fiveWood75Data, sevenWood100Data, sevenWood75Data,
     // Set New Shot Arrays
     setDriver100Data, setDriver75Data, setThreeWood100Data, setThreeWood75Data, setFiveWood100Data, setFiveWood75Data, setSevenWood100Data, setSevenWood75Data,
     // Hybrids
@@ -69,7 +70,7 @@ export const ClubPickerScreen = ({ clubsInMyBag2, clubSelected, setClubSelected,
     // }, [driver100Data]);
 
     // Woods
-    const driver100Ave = shotMeanFunction100(driver100Data);
+    const driver100Ave = calculateWeightedAverage(driver100Data);
     const driver75Ave = shotMeanFunction100(driver75Data);
     const threeWood100Ave = shotMeanFunction100(threeWood100Data);
     const threeWood75Ave = shotMeanFunction100(threeWood75Data);

@@ -1,10 +1,11 @@
 // Changing all driver100 to Driver100Data and importing it. 
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, FlatList, Keyboard, TouchableWithoutFeedback, ScrollView, Touchable } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, SafeAreaView, FlatList, Keyboard, TouchableWithoutFeedback, ScrollView, Touchable, Modal } from 'react-native';
 import PickerSelect from 'react-native-picker-select';
 // import Picker from 'react-native-picker';
-import { Feather } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
+// import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 // Styling
@@ -78,37 +79,6 @@ export const MyStatsScreen = ({
     fifty8Wedge100Data, setFifty8Wedge100Data, fifty8Wedge75Data, setFifty8Wedge75Data, fifty8Wedge50Data, setFifty8Wedge50Data, fifty8Wedge25Data, setFifty8Wedge25Data,
     // Sixty Wedge
     sixtyWedge100Data, setSixtyWedge100Data, sixtyWedge75Data, setSixtyWedge75Data, sixtyWedge50Data, setSixtyWedge50Data, sixtyWedge25Data, setSixtyWedge25Data,
-
-
-    // Shot Arrays
-    driver100, driver75, threeWood100, threeWood75, fiveWood100, fiveWood75, sevenWood100, sevenWood75,
-    twoHybrid100, twoHybrid75, threeHybrid100, threeHybrid75, fourHybrid100, fourHybrid75, fiveHybrid100, fiveHybrid75, sixHybrid100, sixHybrid75, sevenHybrid100, sevenHybrid75,
-    twoIron100, twoIron75, twoIron50, twoIron25, threeIron100, threeIron75, threeIron50, threeIron25, fourIron100, fourIron75, fourIron50, fourIron25,
-    fiveIron100, fiveIron75, fiveIron50, fiveIron25, sixIron100, sixIron75, sixIron50, sixIron25,
-    sevenIron100, sevenIron75, sevenIron50, sevenIron25, eightIron100, eightIron75, eightIron50, eightIron25,
-    nineIron100, nineIron75, nineIron50, nineIron25, pWedge100, pWedge75, pWedge50, pWedge25,
-    forty8Wedge100, forty8Wedge75, forty8Wedge50, forty8Wedge25, fiftyWedge100, fiftyWedge75, fiftyWedge50, fiftyWedge25, fifty2Wedge100, fifty2Wedge75, fifty2Wedge50,
-    fifty2Wedge25, fifty4Wedge100, fifty4Wedge75, fifty4Wedge50, fifty4Wedge25, fifty6Wedge100, fifty6Wedge75, fifty6Wedge50, fifty6Wedge25,
-    fifty8Wedge100, fifty8Wedge75, fifty8Wedge50, fifty8Wedge25, sixtyWedge100, sixtyWedge75, sixtyWedge50, sixtyWedge25,
-    // setClubs
-    setDriver100, setDriver75, setThreeWood100, setThreeWood75, setFiveWood100, setFiveWood75, setSevenWood100, setSevenWood75,
-    setTwoHybrid100, setTwoHybrid75, setThreeHybrid100, setThreeHybrid75, setFourHybrid100, setFourHybrid75, setFiveHybrid100, setFiveHybrid75, setSixHybrid100,
-    setSixHybrid75, setSevenHybrid100, setSevenHybrid75, setTwoIron100, setTwoIron75, setTwoIron50, setTwoIron25,
-    setThreeIron100, setThreeIron75, setThreeIron50, setThreeIron25,
-    setFourIron100, setFourIron75, setFourIron50, setFourIron25,
-    setFiveIron100, setFiveIron75, setFiveIron50, setFiveIron25,
-    setSixIron100, setSixIron75, setSixIron50, setSixIron25,
-    setSevenIron100, setSevenIron75, setSevenIron50, setSevenIron25,
-    setEightIron100, setEightIron75, setEightIron50, setEightIron25,
-    setNineIron100, setNineIron75, setNineIron50, setNineIron25,
-    setPWedge100, setPWedge75, setPWedge50, setPWedge25,
-    setForty8Wedge100, setForty8Wedge75, setForty8Wedge50, setForty8Wedge25,
-    setFiftyWedge100, setFiftyWedge75, setFiftyWedge50, setFiftyWedge25,
-    setFifty2Wedge100, setFifty2Wedge75, setFifty2Wedge50, setFifty2Wedge25,
-    setFifty4Wedge100, setFifty4Wedge75, setFifty4Wedge50, setFifty4Wedge25,
-    setFifty6Wedge100, setFifty6Wedge75, setFifty6Wedge50, setFifty6Wedge25,
-    setFifty8Wedge100, setFifty8Wedge75, setFifty8Wedge50, setFifty8Wedge25,
-    setSixtyWedge100, setSixtyWedge75, setSixtyWedge50, setSixtyWedge25
 }) => {
     // render function
     // function renderClubs() {
@@ -117,11 +87,22 @@ export const MyStatsScreen = ({
     //     ));
     // }
 
+    const [openShotList, setOpenShotList] = useState(false);
+    const openModal = () => {
+        setOpenShotList(true);
+    };
+
+    const closeModal = () => {
+        setOpenShotList(false);
+    };
+
+
     const ShotData = (clubSelected, selectedPower, selectedLabel) => {
         // Woods
         if (clubSelected === 'Driver' && selectedPower === 100) {
             const shotArray = driver100Data;
             console.log('Returned array:', shotArray, shotArray.distance);
+            // shotArray = { data: driver100Data, source: 'Driver 100' };
             return shotArray;
             // const shotArray = driver100Data;
             // const setShotArray = setDriver100Data;
@@ -562,6 +543,21 @@ export const MyStatsScreen = ({
         }
         else
             return <Text>Select shot</Text>
+    };
+
+    // const handleRemoveItem = () => {
+
+    //     const arrayBeingUsed = ShotData();
+    //     console.log({ arrayBeingUsed });
+    //     // setSelectedPower(value);
+    //     // const selected = shotTypeList().find(item => item.value === value);
+    //     // setSelectedLabel(selected ? selected.label : '');
+
+    // };
+    const handleRemoveItem = (clubSelected, selectedPower, selectedLabel) => {
+        const arrayBeingUsed = ShotData(clubSelected, selectedPower, selectedLabel);
+        // console.log({ arrayBeingUsed });
+        console.log(ShotData(clubSelected, selectedPower))
     };
 
     const handleButtonPress = () => {
@@ -1088,6 +1084,417 @@ export const MyStatsScreen = ({
         }
     };
 
+    const handleRemoveButtonPress = (keyToRemove) => {
+        if (clubSelected === 'Driver' && selectedPower === 100) {
+            const updatedArray = driver100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setDriver100Data(updatedData);
+        }
+        else if (clubSelected === 'Driver' && selectedPower === 75) {
+            const updatedArray = driver75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setDriver75Data(updatedData);
+        }
+        else if (clubSelected === '3 Wood' && selectedPower === 100) {
+            const updatedArray = threeWood100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setThreeWood100Data(updatedData);
+        }
+        else if (clubSelected === '3 Wood' && selectedPower === 75) {
+            const updatedArray = threeWood75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setThreeWood75Data(updatedData);
+        }
+        else if (clubSelected === '5 Wood' && selectedPower === 100) {
+            const updatedArray = fiveWood100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiveWood100Data(updatedData);
+
+        }
+        else if (clubSelected === '5 Wood' && selectedPower === 75) {
+            const updatedArray = fiveWood75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiveWood75Data(updatedData);
+        }
+        else if (clubSelected === '7 Wood' && selectedPower === 100) {
+            const updatedArray = sevenWood100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSevenWood100Data(updatedData);
+        }
+        else if (clubSelected === '7 Wood' && selectedPower === 75) {
+            const updatedArray = sevenWood75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSevenWood75Data(updatedData);
+        }
+        // Hybrids
+        else if (clubSelected === '2 Hybrid' && selectedPower === 100) {
+            const updatedArray = twoHybrid100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            twoHybrid100Data(updatedData);
+        }
+        else if (clubSelected === '2 Hybrid' && selectedPower === 75) {
+            const updatedArray = twoHybrid75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            twoHybrid75Data(updatedData);
+        }
+        // else if (clubSelected === '2 Hybrid' && selectedPower === 50) {
+        //     updatedArray = [distance, ...twoHybrid50];
+        //     setTwoHybrid50(updatedArray);
+        // }
+        // Hybrids
+        else if (clubSelected === '3 Hybrid' && selectedPower === 100) {
+            const updatedArray = threeHybrid100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setThreeHybrid100Data(updatedData);
+        }
+        else if (clubSelected === '3 Hybrid' && selectedPower === 75) {
+            const updatedArray = threeHybrid75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setThreeHybrid75Data(updatedData);
+        }
+        else if (clubSelected === '4 Hybrid' && selectedPower === 100) {
+            const updatedArray = fourHybrid100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFourHybrid100Data(updatedData);
+        }
+        else if (clubSelected === '4 Hybrid' && selectedPower === 75) {
+            const updatedArray = fourHybrid75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFourHybrid75Data(updatedData);
+        }
+        else if (clubSelected === '5 Hybrid' && selectedPower === 100) {
+            const updatedArray = fiveHybrid100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiveHybrid100Data(updatedData);
+        }
+        else if (clubSelected === '5 Hybrid' && selectedPower === 75) {
+            const updatedArray = fiveHybrid75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiveHybrid75Data(updatedData);
+        }
+        else if (clubSelected === '6 Hybrid' && selectedPower === 100) {
+            const updatedArray = sixHybrid100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixHybrid100Data(updatedData);
+        }
+        else if (clubSelected === '6 Hybrid' && selectedPower === 75) {
+            const updatedArray = sixHybrid75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixHybrid75Data(updatedData);
+        }
+        else if (clubSelected === '7 Hybrid' && selectedPower === 100) {
+            const updatedArray = sevenHybrid100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSevenHybrid100Data(updatedData);
+        }
+        else if (clubSelected === '7 Hybrid' && selectedPower === 75) {
+            const updatedArray = sevenHybrid75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSevenHybrid75Data(updatedData);
+        }
+
+        // Irons
+        else if (clubSelected === '2 Iron' && selectedPower === 100) {
+            const updatedArray = twoIron100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setTwoIron100Data(updatedData);
+        }
+        else if (clubSelected === '2 Iron' && selectedPower === 75) {
+            const updatedArray = twoIron75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setTwoIron75Data(updatedData);
+        }
+        else if (clubSelected === '2 Iron' && selectedPower === 50) {
+            const updatedArray = twoIron50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setTwoIron50Data(updatedData);
+        }
+        else if (clubSelected === '3 Iron' && selectedPower === 100) {
+            const updatedArray = threeIron100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setThreeIron100Data(updatedData);
+        }
+        else if (clubSelected === '3 Iron' && selectedPower === 75) {
+            const updatedArray = threeIron75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setThreeIron75Data(updatedData);
+        }
+        else if (clubSelected === '3 Iron' && selectedPower === 50) {
+            const updatedArray = threeIron50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setThreeIron50Data(updatedData);
+        }
+        else if (clubSelected === '4 Iron' && selectedPower === 100) {
+            const updatedArray = fourIron100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFourIron100Data(updatedData);
+        }
+        else if (clubSelected === '4 Iron' && selectedPower === 75) {
+            const updatedArray = fourIron75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFourIron75Data(updatedData);
+        }
+        else if (clubSelected === '4 Iron' && selectedPower === 50) {
+            const updatedArray = fourIron50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFourIron50Data(updatedData);
+        }
+        else if (clubSelected === '5 Iron' && selectedPower === 100) {
+            const updatedArray = fiveIron100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiveIron100Data(updatedData);
+        }
+        else if (clubSelected === '5 Iron' && selectedPower === 75) {
+            const updatedArray = fiveIron75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiveIron75Data(updatedData);
+        }
+        else if (clubSelected === '5 Iron' && selectedPower === 50) {
+            const updatedArray = fiveIron50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiveIron50Data(updatedData);
+        }
+        else if (clubSelected === '6 Iron' && selectedPower === 100) {
+            const updatedArray = sixIron100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixIron100Data(updatedData);
+        }
+        else if (clubSelected === '6 Iron' && selectedPower === 75) {
+            const updatedArray = sixIron75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixIron75Data(updatedData);
+        }
+        else if (clubSelected === '6 Iron' && selectedPower === 50) {
+            const updatedArray = sixIron50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixIron50Data(updatedData);
+        }
+        else if (clubSelected === '7 Iron' && selectedPower === 100) {
+            const updatedArray = sevenIron100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSevenIron100Data(updatedData);
+        }
+        else if (clubSelected === '7 Iron' && selectedPower === 75) {
+            const updatedArray = sevenIron75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSevenIron75Data(updatedData);
+        }
+        else if (clubSelected === '7 Iron' && selectedPower === 50) {
+            const updatedArray = sevenIron50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSevenIron50Data(updatedData);
+        }
+        else if (clubSelected === '8 Iron' && selectedPower === 100) {
+            const updatedArray = eightIron100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setEightIron100Data(updatedData);
+        }
+        else if (clubSelected === '8 Iron' && selectedPower === 75) {
+            const updatedArray = eightIron75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setEightIron75Data(updatedData);
+        }
+        else if (clubSelected === '8 Iron' && selectedPower === 50) {
+            const updatedArray = eightIron50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setEightIron50Data(updatedData);
+        }
+        else if (clubSelected === '9 Iron' && selectedPower === 100) {
+            const updatedArray = nineIron100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setNineIron100Data(updatedData);
+        }
+        else if (clubSelected === '9 Iron' && selectedPower === 75) {
+            const updatedArray = nineIron75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setNineIron75Data(updatedData);
+        }
+        else if (clubSelected === '9 Iron' && selectedPower === 50) {
+            const updatedArray = nineIron50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setNineIron50Data(updatedData);
+        }
+
+
+        // Wedges
+        else if (clubSelected === 'PW' && selectedPower === 100) {
+            const updatedArray = pWedge100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setPWedge100Data(updatedData);
+        }
+        else if (clubSelected === 'PW' && selectedPower === 75) {
+            const updatedArray = pWedge75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setPWedge75Data(updatedData);
+        }
+        else if (clubSelected === 'PW' && selectedPower === 50) {
+            const updatedArray = pWedge50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setPWedge50Data(updatedData);
+        }
+        else if (clubSelected === 'PW' && selectedPower === 25) {
+            const updatedArray = pWedge25Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setPWedge25Data(updatedData);
+        }
+
+        else if (clubSelected === '48 Wedge' && selectedPower === 100) {
+            const updatedArray = forty8Wedge100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setForty8Wedge100Data(updatedData);
+        }
+        else if (clubSelected === '48 Wedge' && selectedPower === 75) {
+            const updatedArray = forty8Wedge75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setForty8Wedge75Data(updatedData);
+        }
+        else if (clubSelected === '48 Wedge' && selectedPower === 50) {
+            const updatedArray = forty8Wedge50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setForty8Wedge50Data(updatedData);
+        }
+        else if (clubSelected === '48 Wedge' && selectedPower === 25) {
+            const updatedArray = forty8Wedge25Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setForty8Wedge25Data(updatedData);
+        }
+        else if (clubSelected === '50 Wedge' && selectedPower === 100) {
+            const updatedArray = fiftyWedge100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiftyWedge100Data(updatedData);
+            console.log(fiftyWedge100Data);
+        }
+        else if (clubSelected === '50 Wedge' && selectedPower === 75) {
+            const updatedArray = fiftyWedge75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiftyWedge75Data(updatedData);
+            console.log(fiftyWedge75Data);
+        }
+        else if (clubSelected === '50 Wedge' && selectedPower === 50) {
+            const updatedArray = fiftyWedge50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiftyWedge50Data(updatedData);
+            console.log(fiftyWedge50Data);
+        }
+        else if (clubSelected === '50 Wedge' && selectedPower === 25) {
+            const updatedArray = fiftyWedge25Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFiftyWedge25Data(updatedData);
+            console.log(fiftyWedge25Data);
+        }
+        else if (clubSelected === '52 Wedge' && selectedPower === 100) {
+            const updatedArray = fifty2Wedge100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty2Wedge100Data(updatedData);
+        }
+        else if (clubSelected === '52 Wedge' && selectedPower === 75) {
+            const updatedArray = fifty2Wedge75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty2Wedge75Data(updatedData);
+        }
+        else if (clubSelected === '52 Wedge' && selectedPower === 50) {
+            const updatedArray = fifty2Wedge50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty2Wedge50Data(updatedData);
+        }
+        else if (clubSelected === '52 Wedge' && selectedPower === 25) {
+            const updatedArray = fifty2Wedge25Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty2Wedge25Data(updatedData);
+        }
+        else if (clubSelected === '54 Wedge' && selectedPower === 100) {
+            const updatedArray = fifty4Wedge100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty4Wedge100Data(updatedData);
+        }
+        else if (clubSelected === '54 Wedge' && selectedPower === 75) {
+            const updatedArray = fifty4Wedge75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty4Wedge75Data(updatedData);
+        }
+        else if (clubSelected === '54 Wedge' && selectedPower === 50) {
+            const updatedArray = fifty4Wedge50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty4Wedge50Data(updatedData);
+        }
+        else if (clubSelected === '54 Wedge' && selectedPower === 25) {
+            const updatedArray = fifty4Wedge25Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty4Wedge25Data(updatedData);
+        }
+
+        else if (clubSelected === '56 Wedge' && selectedPower === 100) {
+            const updatedArray = fifty6Wedge100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty6Wedge100Data(updatedData);
+        }
+        else if (clubSelected === '56 Wedge' && selectedPower === 75) {
+            const updatedArray = fifty6Wedge75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty6Wedge75Data(updatedData);
+        }
+        else if (clubSelected === '56 Wedge' && selectedPower === 50) {
+            const updatedArray = fifty6Wedge50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty6Wedge50Data(updatedData);
+        }
+        else if (clubSelected === '56 Wedge' && selectedPower === 25) {
+            const updatedArray = fifty6Wedge25Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty6Wedge25Data(updatedData);
+        }
+        else if (clubSelected === '58 Wedge' && selectedPower === 100) {
+            const updatedArray = fifty8Wedge100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty8Wedge100Data(updatedData);
+        }
+        else if (clubSelected === '58 Wedge' && selectedPower === 75) {
+            const updatedArray = fifty8Wedge75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty8Wedge75Data(updatedData);
+        }
+        else if (clubSelected === '58 Wedge' && selectedPower === 50) {
+            const updatedArray = fifty8Wedge50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty8Wedge50Data(updatedData);
+        }
+        else if (clubSelected === '58 Wedge' && selectedPower === 25) {
+            const updatedArray = fifty8Wedge25Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setFifty8Wedge25Data(updatedData);
+        }
+        else if (clubSelected === '60 Wedge' && selectedPower === 100) {
+            const updatedArray = sixtyWedge100Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixtyWedge100Data(updatedData);
+        }
+        else if (clubSelected === '60 Wedge' && selectedPower === 75) {
+            const updatedArray = sixtyWedge75Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixtyWedge75Data(updatedData);
+        }
+        else if (clubSelected === '60 Wedge' && selectedPower === 50) {
+            const updatedArray = sixtyWedge50Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixtyWedge50Data(updatedData);
+        }
+        else if (clubSelected === '60 Wedge' && selectedPower === 25) {
+            const updatedArray = sixtyWedge25Data.filter(item => item.key !== keyToRemove);
+            const updatedData = updatedArray.map((item, index) => ({ ...item, key: index + 1 }));
+            setSixtyWedge25Data(updatedData);
+        }
+
+        else {
+            // Add more conditions for other combinations if needed
+            // For example: else if (clubSelected === 'Iron' && selectedPower === 100)
+            //             { updatedArray = [distance, ...iron100]; setIron100(updatedArray); }
+            //             else if (clubSelected === 'Hybrid' && selectedPower === 100)
+            //             { updatedArray = [distance, ...hybrid100]; setHybrid100(updatedArray); }
+            //             ...
+        }
+    };
+
+
     const shotTypeList = () => {
         if (clubSelected === 'Driver') {
             return [
@@ -1168,7 +1575,8 @@ export const MyStatsScreen = ({
 
     function removeItem(key) {
         const updatedData = shotArray.filter(item => item.key !== key);
-        setShotArray(updatedData);
+        // setShotArray(updatedData);
+        console.log(updatedData)
     }
     // const handleDeleteButton = (value) => {
     //     setSelectedPower(value);
@@ -1176,25 +1584,69 @@ export const MyStatsScreen = ({
     //     setSelectedLabel(selected ? selected.label : '');
     // };
     function renderDriverData({ item }) {
+        return (
+            <TouchableOpacity style={{
+                padding: 10,
+                borderBottomWidth: .25,
+                borderBottomColor: '#707070',
+            }}
+                onPress={openModal}
+            >
+                <View style={{ flex: 1, flexDirection: 'row', }}>
+                    <View style={{ flex: 3, flexDirection: 'row', alignItems: 'center', }}>
+                        <Text style={mainStyles.header2}>{item.key}</Text>
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', }}>
+                        <Text style={[mainStyles.header1, {
+                        }]}>
+                            {item.distance}
+                        </Text>
+                        {/* <TouchableOpacity
+                            onPress={() => {
+                                // console.log(`Array: ${arrayBeingUsed} | Club Selected: ${clubSelected}`);
+                                handleRemoveItem();
+                            }}
+                        // onPress={() => removeItem(item.key)}
+                        >
+                            <MaterialIcons name="highlight-remove" size={20} color="black" />
+                        </TouchableOpacity> */}
+                    </View>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+
+    function renderShotData({ item }) {
+
+        const { key, distance } = item;
+
+        const handleRemoveItem = () => {
+            handleRemoveButtonPress(key);
+        };
+
 
         return (
             <TouchableOpacity style={{
                 padding: 10,
                 borderBottomWidth: .25,
                 borderBottomColor: '#707070',
-            }}>
+            }}
+                onPress={openModal}
+            >
                 <View style={{ flex: 1, flexDirection: 'row', }}>
                     <View style={{ flex: 3, flexDirection: 'row', alignItems: 'center', }}>
                         <Text style={mainStyles.header2}>{item.key}</Text>
                     </View>
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
+                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', }}>
                         <Text style={[mainStyles.header1, {
                         }]}>
                             {item.distance}
                         </Text>
                         <TouchableOpacity
                             onPress={() => {
-                                console.log(`Array: ${shotArray} | Club Selected: ${clubSelected}`);
+                                // console.log(`Array: ${shotArray} | Club Selected: ${clubSelected}`);
+                                // removeItem();
+                                handleRemoveItem();
                             }}
                         // onPress={() => removeItem(item.key)}
                         >
@@ -1205,12 +1657,16 @@ export const MyStatsScreen = ({
             </TouchableOpacity>
         );
     }
-
     const handleValueChange = (value) => {
         setSelectedPower(value);
         const selected = shotTypeList().find(item => item.value === value);
         setSelectedLabel(selected ? selected.label : '');
     };
+    // const handleRemoveItem = (value) => {
+    //     setSelectedPower(value);
+    //     const selected = shotTypeList().find(item => item.value === value);
+    //     setSelectedLabel(selected ? selected.label : '');
+    // };
     // const handleValueChange = (value) => {
     //     setSelectedPower(value);
     //     const selected = shotTypeList().find(item => item.value === value);
@@ -1338,9 +1794,9 @@ export const MyStatsScreen = ({
                                 <View style={{ flex: 3 }}>
                                     <Text style={[mainStyles.smallText, { fontSize: 12 }]}>Shot Number</Text>
                                 </View>
-                                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end' }}>
                                     <Text style={[mainStyles.smallText, { fontSize: 12 }]}>Distance</Text>
-                                    <Text style={[mainStyles.smallText, { fontSize: 12 }]}>Edit</Text>
+                                    {/* <Text style={[mainStyles.smallText, { fontSize: 12 }]}>Edit</Text> */}
                                 </View>
                             </View>
                             <FlatList
@@ -1360,6 +1816,28 @@ export const MyStatsScreen = ({
                     </View>
                 </View>
             </TouchableWithoutFeedback>
+            <Modal visible={openShotList} onRequestClose={closeModal}>
+                <SafeAreaView>
+                    <View style={{ padding: 20, }}>
+                        <View style={{ paddingVertical: 10, alignItems: 'flex-end' }}>
+                            <TouchableOpacity
+                                onPress={closeModal}
+                            >
+                                <Ionicons name="ios-close" size={24} color="black" />
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <FlatList
+                                data={ShotData(clubSelected, selectedPower)}
+                                renderItem={renderShotData}
+                                keyExtractor={(item, index) => index.toString()}
+                                numColumns={1}
+                                style={{ flexGrow: 1 }}
+                            />
+                        </View>
+                    </View>
+                </SafeAreaView>
+            </Modal>
         </SafeAreaView>
     );
 };

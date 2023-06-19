@@ -29,35 +29,50 @@ export const StatCalculations = () => {
         return { totalShots, mean, upperVariance, lowerVariance };
     };
 
-    function calculateWeightedAverage(array) {
+    function calculateWeightedAverage(array, distance) {
         const firstSetWeight = 0.5; // Weight for the first set of values (1-10)
         const secondSetWeight = 0.3; // Weight for the second set of values (11-20)
         const thirdSetWeight = 0.2; // Weight for the third set of values (21-30)
 
-        let sum = 0;
-        let weightSum = 0;
+        if (distance === 0) {
+            return 0; // Handle the case when distance is 0
+        }
 
-        for (let i = 0; i < array.length && i < 30; i++) {
-            let weight;
+        if (array.length >= 30) {
+            let sum = 0;
+            let weightSum = 0;
 
-            if (i < 10) {
-                weight = firstSetWeight;
-            } else if (i < 20) {
-                weight = secondSetWeight;
-            } else {
-                weight = thirdSetWeight;
+            for (let i = 0; i < 30; i++) {
+                let weight;
+
+                if (i < 10) {
+                    weight = firstSetWeight;
+                } else if (i < 20) {
+                    weight = secondSetWeight;
+                } else {
+                    weight = thirdSetWeight;
+                }
+
+                sum += array[i].distance * weight;
+                weightSum += weight;
             }
-
-            sum += array[i].distance * weight;
-            weightSum += weight;
+            // remove this eventually
+            console.log("Shots over 30")
+            return Math.round(sum / weightSum);
         }
 
-        if (weightSum === 0) {
-            return 0; // Handle the case when there are no valid values in the array
+        if (array.length > 0 && array.length < 30) {
+            const distances = array.map(item => item.distance);
+            const sum = distances.reduce((acc, value) => acc + value, 0);
+            const average = Math.round(sum / distances.length);
+            // remove this eventually
+            console.log("Shots between 1 - 30")
+            return average;
         }
 
-        return Math.round(sum / weightSum);
+        return 0; // Handle the case when array is empty or length is negative
     }
+
 
     const shotMeanFunction100 = (arrayUsed) => {
         const distances = arrayUsed.map(item => item.distance);
@@ -108,6 +123,7 @@ export const StatCalculations = () => {
 
 
     return {
+        calculateWeightedAverage,
         calculateStats,
         shotMeanFunction100,
         shotMeanFunction75,
