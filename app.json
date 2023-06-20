@@ -2,7 +2,7 @@
   "expo": {
     "name": "MeanGolf",
     "slug": "ClubCaddie",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "platforms": [
       "ios",
       "android"
@@ -19,15 +19,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "com.meangolf.meangolf",
-      "buildNumber": "1.0.3"
+      "buildNumber": "1.0.4"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Icon_Splash1.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.meangolf.meangolf"
     },
     "web": {
       "favicon": "./assets/Icon_Splash.png"

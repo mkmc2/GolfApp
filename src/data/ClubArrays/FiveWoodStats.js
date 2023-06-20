@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 export const FiveWoodData = () => {
     // Temporary State
-    const [fiveWood100Data, setFiveWood100Data] = useState([{ "distance": 265, "key": 1 }, { "distance": 264, "key": 2 }, { "distance": 260, "key": 3 }, { "distance": 259, "key": 4 }, { "distance": 254, "key": 5 }, { "distance": 257, "key": 6 }]);
-    const [fiveWood75Data, setFiveWood75Data] = useState([{ "distance": 244, "key": 1 }, { "distance": 243, "key": 2 }, { "distance": 241, "key": 3 }, { "distance": 248, "key": 4 }, { "distance": 248, "key": 5 }, { "distance": 245, "key": 6 }]);
+    // const [fiveWood100Data, setFiveWood100Data] = useState([{ "distance": 265, "key": 1 }, { "distance": 264, "key": 2 }, { "distance": 260, "key": 3 }, { "distance": 259, "key": 4 }, { "distance": 254, "key": 5 }, { "distance": 257, "key": 6 }]);
+    // const [fiveWood75Data, setFiveWood75Data] = useState([{ "distance": 244, "key": 1 }, { "distance": 243, "key": 2 }, { "distance": 241, "key": 3 }, { "distance": 248, "key": 4 }, { "distance": 248, "key": 5 }, { "distance": 245, "key": 6 }]);
     // State
-    // const [fiveWood100Data, setFiveWood100Data] = useState([]);
-    // const [fiveWood75Data, setFiveWood75Data] = useState([]);
+    const [fiveWood100Data, setFiveWood100Data] = useState([]);
+    const [fiveWood75Data, setFiveWood75Data] = useState([]);
 
     const [fiveWoodShotCounter100, setFiveWoodShotCounter100] = useState();
     const [fiveWoodShotCounter75, setFiveWoodShotCounter75] = useState();
