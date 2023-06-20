@@ -2,7 +2,7 @@
   "expo": {
     "name": "MeanGolf",
     "slug": "ClubCaddie",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "platforms": [
       "ios",
       "android"
@@ -21,7 +21,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.meangolf.meangolf",
-      "buildNumber": "1.0.5"
+      "buildNumber": "1.0.6"
     },
     "android": {
       "adaptiveIcon": {
