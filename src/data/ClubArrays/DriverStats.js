@@ -4,11 +4,11 @@ import { calculateWeightedAverage, historicalAverage, shotMeanFunction100, shotM
 export const DriverData = () => {
 
     // Temporary Driver Stats
-    const [driver100Data, setDriver100Data] = useState([{ "distance": 301, "key": 1 }, { "distance": 299, "key": 2 }, { "distance": 304, "key": 3 }, { "distance": 310, "key": 4 }, { "distance": 303, "key": 5 }, { "distance": 301, "key": 6 }]);
-    const [driver75Data, setDriver75Data] = useState([{ "distance": 285, "key": 1 }, { "distance": 288, "key": 2 }, { "distance": 291, "key": 3 }, { "distance": 286, "key": 4 }, { "distance": 287, "key": 5 }, { "distance": 281, "key": 6 }]);
+    // const [driver100Data, setDriver100Data] = useState([{ "distance": 301, "key": 1 }, { "distance": 299, "key": 2 }, { "distance": 304, "key": 3 }, { "distance": 310, "key": 4 }, { "distance": 303, "key": 5 }, { "distance": 301, "key": 6 }]);
+    // const [driver75Data, setDriver75Data] = useState([{ "distance": 285, "key": 1 }, { "distance": 288, "key": 2 }, { "distance": 291, "key": 3 }, { "distance": 286, "key": 4 }, { "distance": 287, "key": 5 }, { "distance": 281, "key": 6 }]);
     // State
-    // const [driver100Data, setDriver100Data] = useState([]);
-    // const [driver75Data, setDriver75Data] = useState([]);
+    const [driver100Data, setDriver100Data] = useState([]);
+    const [driver75Data, setDriver75Data] = useState([]);
     const [driver100WeightedAve, setDriver100WeightedAve] = useState(0)
     const [driver75WeightedAve, setDriver75WeightedAve] = useState(0)
 
