@@ -1693,7 +1693,7 @@ export const MyStatsScreen = ({
                     style={[mainStyles.screenContainer, { flex: 1 }]}
                 >
                     <Text style={[mainStyles.header1, { alignSelf: "center", paddingBottom: 30, fontSize: 30, }]}>Log Shots</Text>
-                    <View style={{ flex: 4, alignItems: "flex-start", justifyContent: 'stretch' }}>
+                    <View style={{ flex: 4, alignItems: "flex-start", justifyContent: 'flex-start' }}>
                         <View style={{ flexDirection: 'row', paddingVertical: 5 }}>
                             <View style={{ flex: 1, flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View>

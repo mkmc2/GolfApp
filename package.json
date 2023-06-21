@@ -4,7 +4,7 @@
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
-    "ios": "expo run:ios",
+    "ios": "npx expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
@@ -13,13 +13,16 @@
     "@react-navigation/native-stack": "^6.9.12",
     "@react-navigation/stack": "^6.3.16",
     "expo": "~48.0.18",
+    "expo-dev-client": "^2.2.1",
     "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
     "react-native": "0.71.8",
+    "react-native-gesture-handler": "^2.12.0",
     "react-native-picker": "^4.3.7",
     "react-native-picker-select": "^8.0.4",
-    "react-native-safe-area-context": "4.5.0"
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "^3.21.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
