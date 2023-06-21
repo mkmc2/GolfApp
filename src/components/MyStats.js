@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, FlatList, Keyboard, TouchableWithoutFeedback, ScrollView, Touchable, Modal } from 'react-native';
 import PickerSelect from 'react-native-picker-select';
 // import Picker from 'react-native-picker';
+// import { Picker } from '@react-native-picker/picker';
 import { Feather, Ionicons } from '@expo/vector-icons';
 // import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -1693,7 +1694,7 @@ export const MyStatsScreen = ({
                     style={[mainStyles.screenContainer, { flex: 1 }]}
                 >
                     <Text style={[mainStyles.header1, { alignSelf: "center", paddingBottom: 30, fontSize: 30, }]}>Log Shots</Text>
-                    <View style={{ flex: 4, alignItems: "flex-start", justifyContent: 'flex-start' }}>
+                    <View style={{ flex: 4, alignItems: "flex-start", }}>
                         <View style={{ flexDirection: 'row', paddingVertical: 5 }}>
                             <View style={{ flex: 1, flexDirection: 'row', alignItems: "center", justifyContent: "space-between", }}>
                                 <View>
