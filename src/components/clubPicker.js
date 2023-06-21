@@ -657,7 +657,7 @@ export const ClubPickerScreen = ({
                 <View style={{ flex: 4, paddingHorizontal: 10, alignItems: 'flex-start', }}>
                     <View>
                         <Text style={[mainStyles.mdText, { color: '#4d4d4d', }]}>Shot Type</Text>
-                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{item.shotType}</Text>
+                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{item.shotType}</Text>
                     </View>
                 </View>
                 <View style={{ flex: 2, alignItems: 'flex-end', paddingHorizontal: 10, }}>

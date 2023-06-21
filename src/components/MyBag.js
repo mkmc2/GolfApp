@@ -1133,7 +1133,7 @@ const MyBagScreen = ({ navigation,
 
             // null
             else {
-                return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11, }]}>not enough data</Text>
+                return <Text style={[mainStyles.mdText, { fontWeight: '400', fontSize: 11, }]}>not enough data</Text>
             }
         }
         shotFunction75 = () => {
@@ -1225,7 +1225,7 @@ const MyBagScreen = ({ navigation,
             }
             // Else
             else {
-                return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11, }]}>not enough data</Text>
+                return <Text style={[mainStyles.mdText, { fontWeight: '400', fontSize: 11, }]}>not enough data</Text>
             }
         }
         shotFunction50 = () => {
@@ -1267,7 +1267,7 @@ const MyBagScreen = ({ navigation,
             }
             // Else
             else {
-                return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11, }]}>not enough data</Text>;
+                return <Text style={[mainStyles.mdText, { fontWeight: '400', fontSize: 11, }]}>not enough data</Text>;
             }
         }
 
@@ -1292,7 +1292,7 @@ const MyBagScreen = ({ navigation,
             }
             // Else
             else {
-                return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11 }]}>not enough data</Text>;
+                return <Text style={[mainStyles.mdText, { fontWeight: '400', fontSize: 11 }]}>not enough data</Text>;
             }
         }
 
@@ -1386,7 +1386,7 @@ const MyBagScreen = ({ navigation,
             }
             // null
             else {
-                return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11 }]}>not enough data</Text>;
+                return <Text style={[mainStyles.mdText, { fontWeight: '400', fontSize: 11 }]}>not enough data</Text>;
             }
 
 
@@ -1476,7 +1476,7 @@ const MyBagScreen = ({ navigation,
             }
             // Else
             else {
-                return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11 }]}>not enough data</Text>;
+                return <Text style={[mainStyles.mdText, { fontWeight: '400', fontSize: 11 }]}>not enough data</Text>;
             }
         }
         const calculateStats50 = () => {
@@ -1518,7 +1518,7 @@ const MyBagScreen = ({ navigation,
             }
             // Else
             else {
-                return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11 }]}>not enough data</Text>;
+                return <Text style={[mainStyles.mdText, { fontWeight: '400', fontSize: 11 }]}>not enough data</Text>;
             }
         }
 
@@ -1543,7 +1543,7 @@ const MyBagScreen = ({ navigation,
             }
             // Else
             else {
-                return <Text style={[mainStyles.mdText, { fontWeight: 400, fontSize: 11 }]}>not enough data</Text>;
+                return <Text style={[mainStyles.mdText, { fontWeight: '400', fontSize: 11 }]}>not enough data</Text>;
             }
         }
 
@@ -1650,8 +1650,7 @@ const MyBagScreen = ({ navigation,
                                 {/* 100% yardage */}
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{fullShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{fullShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ flexDirection: 'row', alignItems: 'flex-end', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>
@@ -1679,8 +1678,7 @@ const MyBagScreen = ({ navigation,
                                 }
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{seventyFiveShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{seventyFiveShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ alignItems: 'center', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>
@@ -1733,8 +1731,7 @@ const MyBagScreen = ({ navigation,
                                 {/* 100% yardage */}
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{fullShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{fullShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ flexDirection: 'row', alignItems: 'flex-end', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>
@@ -1762,8 +1759,7 @@ const MyBagScreen = ({ navigation,
                                 }
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{seventyFiveShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{seventyFiveShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ alignItems: 'center', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>
@@ -1790,8 +1786,7 @@ const MyBagScreen = ({ navigation,
                                 }
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{fiftyShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{fiftyShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ alignItems: 'center', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>
@@ -1856,8 +1851,7 @@ const MyBagScreen = ({ navigation,
                                 {/* 100% yardage */}
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{fullShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{fullShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ flexDirection: 'row', alignItems: 'flex-end', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>
@@ -1885,8 +1879,7 @@ const MyBagScreen = ({ navigation,
                                 }
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{seventyFiveShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{seventyFiveShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ alignItems: 'center', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>
@@ -1913,8 +1906,7 @@ const MyBagScreen = ({ navigation,
                                 }
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{fiftyShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{fiftyShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ alignItems: 'center', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>
@@ -1941,8 +1933,7 @@ const MyBagScreen = ({ navigation,
                                 }
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', borderBottomWidth: .75, borderBottomColor: "gray", }}>
                                     <View style={{ flex: 3, paddingBottom: 3, }}>
-                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: 800, }]}>{twentyFiveShotLabel}</Text>
-                                        {/* <Text style={[mainStyles.mdText, { paddingVertical: 2, paddingHorizontal: 10, fontWeight: 800, color: 'white', }]}>{fullShotLabel}</Text> */}
+                                        <Text style={[mainStyles.header3, { paddingVertical: 2, fontWeight: '800', }]}>{twentyFiveShotLabel}</Text>
                                     </View>
                                     <View style={{ flex: 3, alignItems: 'flex-end', paddingBottom: 5, }}>
                                         <View style={{ alignItems: 'center', padding: 5, borderRadius: 5, paddingHorizontal: 10, }}>

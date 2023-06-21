@@ -113,13 +113,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.meangolf.meangolf'
+    namespace "com.meangolf"
     defaultConfig {
         applicationId 'com.meangolf.meangolf'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0.6"
+        versionName "1.0.7"
     }
 
     splits {

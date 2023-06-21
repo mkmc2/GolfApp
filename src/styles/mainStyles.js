@@ -61,19 +61,19 @@ const mainStyles = StyleSheet.create({
     // Text Styling
     header1: {
         fontSize: 20,
-        fontWeight: 800,
+        fontWeight: '800',
     },
     header2: {
         fontSize: 18,
-        fontWeight: 800,
+        fontWeight: '800',
     },
     header3: {
         fontSize: 16,
-        fontWeight: 700,
+        fontWeight: '700',
     },
     header4: {
         fontSize: 14,
-        fontWeight: 600,
+        fontWeight: '600',
     },
     mdText: {
         fontSize: 12,
